@@ -123,7 +123,7 @@ export default function Home() {
     console.log(item.email);
     try {
       const body = {
-        id: Number(item.id),
+        id: item.id,
         fname: item.fname,
         lname: item.lname,
         email: item.email,

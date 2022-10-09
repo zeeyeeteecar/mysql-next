@@ -6,7 +6,7 @@ export default async function handle(req, res) {
   const { id, fname, lname, email, avator } = req.body;
 
   const result = await prisma.User.update({
-    where: { id: id },
+    where: { id: Number(id) },
     data: {
       fname: fname,
       lname: lname,
