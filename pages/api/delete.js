@@ -9,5 +9,5 @@ export default async function handle(req, res) {
   const user = await prisma.User.delete({
     where: { id: id },
   });
-  //res.json(result);
+  res.json(user);
 }
