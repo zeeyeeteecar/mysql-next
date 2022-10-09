@@ -41,7 +41,7 @@ export default function ListItem({ item, handleUpdate, handleDelete }) {
             icon={<EmailIcon />}
             //onClick={() => handleUpdate()}
           />
-          <Button type="submit" colorScheme="blue"></Button>
+
         </HStack>
       </form>
     </div>
