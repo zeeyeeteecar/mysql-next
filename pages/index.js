@@ -33,6 +33,13 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [avator, setAvator] = useState("");
 
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
   const toast = useToast({
     position: "top",
     title: "record updated",
@@ -67,13 +74,6 @@ export default function Home() {
   //console.log(data, error);
 
   /*********************Add New*****/
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
-
   const onSubmit = async (data) => {
     console.log("data.lname---", data.lname);
     //alert(JSON.stringify(data));
