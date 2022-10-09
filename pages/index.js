@@ -23,9 +23,9 @@ import ListItem from "./components/listItem";
 
 //import InitialFocus from "./components/modal_update";
 
-import { SearchIcon, CloseIcon, EmailIcon } from "@chakra-ui/icons";
+//import { SearchIcon, CloseIcon, EmailIcon } from "@chakra-ui/icons";
 
-import component_modal from "./components/modal";
+//import component_modal from "./components/modal";
 
 export default function Home() {
   const [fname, setFname] = useState("");
