@@ -23,7 +23,7 @@ export default function ListItem({ item, handleUpdate, handleDelete }) {
     <div key={item.id}>
       <form onSubmit={handleSubmit(handleUpdate)}>
         <HStack>
-          <Input {...register("id")} defaultValue={item.id} w="150px"></Input>
+          
           <Input {...register("fname")} defaultValue={item.fname}></Input>
           <Input {...register("lname")} defaultValue={item.lname}></Input>
           <Input {...register("email")} defaultValue={item.email}></Input>
