@@ -164,7 +164,11 @@ export default function Home() {
               return (
                 <HStack spacing="5" key={index}>
                   <ListItem
-                    item={item}
+                    id={item.id}
+                    fname={item.fname}
+                    lname={item.lname}
+                    email={item.email}
+                    avator={item.avator}
                     handleUpdate={handleUpdate}
                     handleDelete={handleDelete}
                   />

@@ -11,7 +11,15 @@ import {
 } from "@chakra-ui/react";
 import { EmailIcon, CloseIcon } from "@chakra-ui/icons";
 
-export default function ListItem({ item, handleUpdate, handleDelete }) {
+export default function ListItem({
+  id,
+  fname,
+  lname,
+  email,
+  avator,
+  handleUpdate,
+  handleDelete,
+}) {
   const {
     register,
     handleSubmit,
@@ -20,14 +28,14 @@ export default function ListItem({ item, handleUpdate, handleDelete }) {
   } = useForm();
 
   return (
-    <div key={item.id}>
+    <div key={id}>
       <form onSubmit={handleSubmit(handleUpdate)}>
         <HStack>
-          
-          <Input {...register("fname")} defaultValue={item.fname}></Input>
-          <Input {...register("lname")} defaultValue={item.lname}></Input>
-          <Input {...register("email")} defaultValue={item.email}></Input>
-          <Input {...register("avator")} defaultValue={item.avator}></Input>
+          <Input {...register("id")} defaultValue={id} w="150px"></Input>
+          <Input {...register("fname")} defaultValue={fname}></Input>
+          <Input {...register("lname")} defaultValue={lname}></Input>
+          <Input {...register("email")} defaultValue={email}></Input>
+          <Input {...register("avator")} defaultValue={avator}></Input>
           <IconButton
             colorScheme="blue"
             aria-label="Search database"
@@ -41,7 +49,6 @@ export default function ListItem({ item, handleUpdate, handleDelete }) {
             icon={<EmailIcon />}
             //onClick={() => handleUpdate()}
           />
-
         </HStack>
       </form>
     </div>
