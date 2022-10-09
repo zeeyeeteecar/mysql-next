@@ -40,7 +40,7 @@ export default function ListItem({
             colorScheme="blue"
             aria-label="Search database"
             icon={<CloseIcon />}
-            onClick={() => handleDelete(item.id)}
+            onClick={() => handleDelete(id)}
           />
           <IconButton
             type="submit"
