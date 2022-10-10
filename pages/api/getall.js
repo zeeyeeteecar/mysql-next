@@ -1,8 +1,8 @@
-import prisma from "../lib/prisma";
-//import { PrismaClient } from "@prisma/client";
+//import prisma from "../lib/prisma";
+import { PrismaClient } from "@prisma/client";
 
 export default async function handle(req, res) {
-  //const prisma = new PrismaClient();
+  const prisma = new PrismaClient();
 
   const result = await prisma.User.findMany({
     orderBy: [
