@@ -3,9 +3,11 @@ import { PrismaClient } from "@prisma/client";
 
 export default async function handle(req, res) {
   const prisma = new PrismaClient();
+  await prisma.$connect();
+
   const { fname, lname, email, avator } = req.body;
 
-  const result = await prisma.User.create({
+  const result = await prisma.user.create({
     data: {
       fname: fname,
       lname: lname,
@@ -14,5 +16,6 @@ export default async function handle(req, res) {
     },
   });
 
+  await prisma.$disconnect();
   res.json(result);
 }

@@ -4,13 +4,16 @@ import { PrismaClient } from "@prisma/client";
 
 export default async function handle(req, res) {
   const prisma = new PrismaClient();
+  await prisma.$connect();
 
-  const result = await prisma.User.findMany({
+  const result = await prisma.user.findMany({
     orderBy: [
       {
         id: "asc",
       },
     ],
   });
+
+  await prisma.$disconnect();
   res.json(result);
 }

@@ -3,9 +3,11 @@ import { PrismaClient } from "@prisma/client";
 
 export default async function handle(req, res) {
   const prisma = new PrismaClient();
+  await prisma.$connect();
+  
   const { id, fname, lname, email, avator } = req.body;
 
-  const result = await prisma.User.update({
+  const result = await prisma.user.update({
     where: { id: Number(id) },
     data: {
       fname: fname,
@@ -14,5 +16,7 @@ export default async function handle(req, res) {
       avator: avator,
     },
   });
+
+  await prisma.$disconnect();
   res.json(result);
 }

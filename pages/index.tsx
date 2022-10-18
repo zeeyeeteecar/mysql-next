@@ -27,7 +27,16 @@ import ListItem from "./components/listItem";
 
 //import component_modal from "./components/modal";
 
-export default function Home() {
+// export const getServerSideProps = async () => {
+//   const res = await fetch("http://localhost:3000//api/getall");
+//   const data = await res.json();
+
+//   return {
+//     props: { data: data },
+//   };
+// };
+
+export default function Home(props) {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
@@ -129,7 +138,7 @@ export default function Home() {
         email: item.email,
         avator: item.avator,
       };
-      alert(JSON.stringify(body));
+      //alert(JSON.stringify(body));
       await fetch("/api/update", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -149,7 +158,7 @@ export default function Home() {
     <VStack>
       <Text fontSize="6xl">Home</Text>
       <Stack
-        columns={2}
+        col={2}
         spacing={10}
         border="1px"
         borderColor="gray.200"
