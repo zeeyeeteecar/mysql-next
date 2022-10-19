@@ -1,5 +1,5 @@
 //import { PrismaClient } from "@prisma/client";
-import { prisma } from "./db";
+import { prisma } from "./prisma";
 
 export default async function handle(req, res) {
   //const prisma = new PrismaClient();
