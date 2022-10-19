@@ -7,17 +7,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model user {
   id     Int    @id @default(autoincrement())
   fname  String
   lname  String
   email  String
   avator String
-  posts Post[]
+  post   post[]
 }
 
-model Post {
-  id       Int  @id @default(autoincrement())
-  author   User @relation(fields: [authorId], references: [id])
-  authorId Int // relation scalar field  (used in the `@relation` attribute above)
+model post {
+  id          Int    @id @default(autoincrement())
+  title       String
+  description String
+  userId      Int
+  user        user   @relation(fields: [userId], references: [id])
 }
