@@ -1,10 +1,10 @@
 //import { PrismaClient } from "@prisma/client";
-import {prisma} from "../lib/prisma";
+import { prisma } from "./db";
 
 export default async function handle(req, res) {
   //const prisma = new PrismaClient();
   await prisma.$connect();
-  
+
   const { id, fname, lname, email, avator } = req.body;
 
   const result = await prisma.user.update({
