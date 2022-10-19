@@ -179,7 +179,7 @@ export default function Home(props) {
                   p="3px"
                   w="100%"
                   key={index}
-                  _hover={{ backgroundColor: "gray.100" }}
+                  _hover={{ backgroundColor: "gray.50" }}
                 >
                   <ListItem
                     id={item.id}
