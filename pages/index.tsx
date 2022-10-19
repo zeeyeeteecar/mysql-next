@@ -17,7 +17,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 
-import ListItem from "./components/listItem";
+import ListItem from "./components/itemDetail";
 
 //import InitialFocus from "./components/modal";
 
@@ -155,23 +155,31 @@ export default function Home(props) {
   };
 
   return (
-    <VStack>
+    <VStack borderWidth="1px" p="5px">
       <Text fontSize="6xl">Home</Text>
       <Stack
-        col={2}
+        borderWidth="1px"
+        p="5px"
         spacing={10}
         border="1px"
         borderColor="gray.200"
         w="1000px"
         h="800px"
       >
-        <VStack border="1px" borderColor="gray.200">
+        <VStack border="1px" borderColor="red.200" p="5px">
           {data &&
             data.map((item, index) => {
               //setFname(item.fname);
 
               return (
-                <HStack spacing="5" key={index}>
+                <HStack
+                borderBottom="1px"
+                  borderColor="blue.100"
+                  spacing="5"
+                  p="3px"
+                  w="100%"
+                  key={index}
+                >
                   <ListItem
                     id={item.id}
                     fname={item.fname}
@@ -185,18 +193,18 @@ export default function Home(props) {
               );
             })}
         </VStack>
-        <VStack w="300px">
+        <VStack w="100%">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <VStack>
+            <HStack>
               <Input {...register("fname")}></Input>
               <Input {...register("lname")}></Input>
               <Input {...register("email")}></Input>
               <Input {...register("avator")}></Input>
-              <Button type="submit" colorScheme="blue">
+              <Button type="submit" colorScheme="blue" w="300px">
                 Submit
               </Button>
               <Stack></Stack>
-            </VStack>
+            </HStack>
           </form>
         </VStack>
       </Stack>
