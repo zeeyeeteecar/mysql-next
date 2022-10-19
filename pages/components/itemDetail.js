@@ -52,13 +52,18 @@ export default function ListItem({
           aria-label="Search database"
           icon={<CloseIcon />}
           onClick={() => handleDelete(id)}
+          backgroundColor="gray.200"
+          _hover={{ bg: "teal.600" }}
+          _focus={{ boxShadow: "outline" }}
         />
         <IconButton
           type="submit"
           colorScheme="blue"
           aria-label="Search database"
           icon={<EmailIcon />}
-          //onClick={() => handleUpdate()}
+          backgroundColor="gray.200"
+          _hover={{ bg: "teal.600" }}
+          _focus={{ boxShadow: "outline" }}
         />
         <ItemUpdate
           id={id}

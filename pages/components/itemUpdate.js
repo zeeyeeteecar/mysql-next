@@ -49,6 +49,9 @@ export default function ItemUpdate({
         aria-label="Search database"
         icon={<EditIcon />}
         onClick={onOpen}
+        backgroundColor="gray.200"
+        _hover={{ bg: "teal.600" }}
+        _focus={{ boxShadow: "outline" }}
       />
 
       <Modal
@@ -65,6 +68,7 @@ export default function ItemUpdate({
             <ModalCloseButton />
             <ModalBody pb={6}>
               <VStack>
+                <Text>ID</Text>
                 <Input {...register("id")} value={id} w="150px"></Input>
                 <Input {...register("fname")} defaultValue={fname}></Input>
                 <Input {...register("lname")} defaultValue={lname}></Input>

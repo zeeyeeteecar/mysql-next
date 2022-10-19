@@ -173,12 +173,13 @@ export default function Home(props) {
 
               return (
                 <HStack
-                borderBottom="1px"
+                  borderBottom="1px"
                   borderColor="blue.100"
                   spacing="5"
                   p="3px"
                   w="100%"
                   key={index}
+                  _hover={{ backgroundColor: "gray.100" }}
                 >
                   <ListItem
                     id={item.id}
