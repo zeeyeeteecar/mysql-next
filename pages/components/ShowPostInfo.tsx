@@ -30,7 +30,9 @@ import {
   PopoverAnchor,
 } from "@chakra-ui/react";
 
-export default function ItemPostInfo({ post }) {
+type post = [{ postId: number; postTitle: String; postDescription: String }];
+
+export default function ItemPostInfo({ post: post }) {
   console.log("post == ", post);
 
   const { onOpen, onClose, isOpen } = useDisclosure();
@@ -56,9 +58,9 @@ export default function ItemPostInfo({ post }) {
       </PopoverTrigger>
       <PopoverContent w="500px">
         <PopoverArrow />
-        <PopoverCloseButton onClick={onClose}/>
+        <PopoverCloseButton onClick={onClose} />
         <PopoverHeader>Confirmation!=={countPost}</PopoverHeader>
-        <PopoverBody backgroundColor="gray.200">
+        <PopoverBody backgroundColor="black.200">
           <VStack>
             {post &&
               post.map((post, index) => {
