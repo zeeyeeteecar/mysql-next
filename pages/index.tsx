@@ -1,4 +1,5 @@
 import React from "react";
+import { NextPage } from "next";
 import useSWR from "swr";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -17,7 +18,21 @@ import {
   useToast,
 } from "@chakra-ui/react";
 
-import ListItem from "./components/itemDetail";
+import ItemUserDetail from "./components/ItemUserDetail";
+import InsertNewUser from "./components/InsertNewUser";
+
+type Props = {
+  id: String;
+  fname: String;
+  lname: String;
+  email: String;
+  avator: String;
+  post: [{ postId: number; postTitle: String; postDescription: String }];
+  handleUpdate: () => void;
+  handleDelete: (id: String) => void;
+  //post:any;
+};
+
 
 //import InitialFocus from "./components/modal";
 
@@ -58,29 +73,13 @@ export default function Home(props) {
     },
   });
 
-  /****************textbox OnChange  */
-  const handleChange = (event) => {
-    setFname(event.target.value);
-    setLname(event.target.value);
-    setEmail(event.target.value);
-    setAvator(event.target.value);
-
-    event.target.defaultValue = event.target.value;
-
-    // 👇️ this is the input field itself
-    console.log("value--", event);
-
-    // 👇️ this is the new value of the input
-    console.log("target--", event.target.value);
-  };
-
   /*********************List all*****/
   const fetcher = (url) => fetch(url).then((res) => res.json());
   const { data, error } = useSWR("/api/getall", fetcher, {
     refreshInterval: 1000,
   });
 
-  //console.log(data, error);
+  console.log(data, error);
 
   /*********************Add New*****/
   const onSubmit = async (data) => {
@@ -156,7 +155,7 @@ export default function Home(props) {
 
   return (
     <VStack borderWidth="1px" p="5px">
-      <Text fontSize="6xl">Home</Text>
+      <Text fontSize="6xl">Total: {data && data.length} record(s)</Text>
       <Stack
         borderWidth="1px"
         p="5px"
@@ -169,7 +168,7 @@ export default function Home(props) {
         <VStack border="1px" borderColor="red.200" p="5px">
           {data &&
             data.map((item, index) => {
-              //setFname(item.fname);
+              //console.log("item==", item);
 
               return (
                 <HStack
@@ -181,12 +180,13 @@ export default function Home(props) {
                   key={index}
                   _hover={{ backgroundColor: "gray.50" }}
                 >
-                  <ListItem
+                  <ItemUserDetail
                     id={item.id}
                     fname={item.fname}
                     lname={item.lname}
                     email={item.email}
                     avator={item.avator}
+                    post={item.post}
                     handleUpdate={handleUpdate}
                     handleDelete={handleDelete}
                   />
@@ -195,18 +195,7 @@ export default function Home(props) {
             })}
         </VStack>
         <VStack w="100%">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <HStack>
-              <Input {...register("fname")}></Input>
-              <Input {...register("lname")}></Input>
-              <Input {...register("email")}></Input>
-              <Input {...register("avator")}></Input>
-              <Button type="submit" colorScheme="blue" w="300px">
-                Submit
-              </Button>
-              <Stack></Stack>
-            </HStack>
-          </form>
+          <InsertNewUser onSubmit={onSubmit} />
         </VStack>
       </Stack>
     </VStack>
