@@ -1,6 +1,6 @@
 import React from "react";
 import { NextPage } from "next";
-import useSWR from "swr";
+import useSWR, {Key, Fetcher }from "swr";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -21,7 +21,7 @@ import {
 import ItemUserDetail from "./components/ItemUserDetail";
 import InsertNewUser from "./components/InsertNewUser";
 
-type Props = {
+type Props =[ {
   id: String;
   fname: String;
   lname: String;
@@ -31,7 +31,8 @@ type Props = {
   handleUpdate: () => void;
   handleDelete: (id: String) => void;
   //post:any;
-};
+
+}];
 
 
 //import InitialFocus from "./components/modal";
@@ -74,12 +75,17 @@ export default function Home(props) {
   });
 
   /*********************List all*****/
+  //const fetcher = (url) => fetch(url).then((res) => res.json());
+  //const { data} = useSWR("/api/getall", fetcher, {
+  //  refreshInterval: 1000,
+  //});
+
   const fetcher = (url) => fetch(url).then((res) => res.json());
-  const { data, error } = useSWR("/api/getall", fetcher, {
+  const {data} = useSWR<Props>("/api/getall", fetcher, {
     refreshInterval: 1000,
   });
 
-  console.log(data, error);
+  console.log(data);
 
   /*********************Add New*****/
   const onSubmit = async (data) => {
